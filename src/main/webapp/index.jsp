@@ -7,8 +7,10 @@
 <title>Proyecto ASR new...</title>
 </head>
 <body>
-<h1>Ejemplo de Proyecto de ASR con Cloudant ahora con DevOps</h1>
+<h1>Ejemplo de Proyecto de ASR con Cloudant ahora con DevOps Alberto Colino Ruipérez</h1>
 <hr />
+Son las <%= new java.util.Date() %>
+Practica 10b Albero Colino
 <p>ZZZZZ Opciones <b>CLOUDANT o ZZZZZZ n IBM Cloud</b>:</p>
 <ul>
 <li><a href="listar">Listar</a></li>
