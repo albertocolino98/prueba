@@ -11,7 +11,7 @@
 <hr />
 Son las <%= new java.util.Date() %>
 Practica 10b Albero Colino
-Otra modificacion3
+Otra modificacion4
 <p>ZZZZZ Opciones <b>CLOUDANT o ZZZZZZ n IBM Cloud</b>:</p>
 <ul>
 <li><a href="listar">Listar</a></li>
