@@ -14,10 +14,13 @@ Practica 10b Albero Colino
 Otra modificacion4
 blajlkasjflkajslkñjdsalkj
 <p>ZZZZZ Opciones <b>CLOUDANT o ZZZZZZ n IBM Cloud</b>:</p>
-<ul>
-<li><a href="listar">Listar</a></li>
-<!-- <li><a href="insertar?palabra=hola">Insertar:</li> -->
-<li><a href="insertar">Insertar: <input type ="text" name ="palabra"></a><button> Guardar en Cloudant</button></li>
-</ul>
+<form method ="POST" action ="Controller.java">
+	<ul>
+
+	<li><a href="listar">Listar</a></li>
+	<!-- <li><a href="insertar?palabra=hola">Insertar:</li> -->
+	<li><a href="insertar">Insertar: </a><input type ="text" name ="palabra"><input type="submit" value="Guardar en Cloudant"></li>
+	</ul>
+</form>
 </body>
 </html>
