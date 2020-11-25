@@ -16,7 +16,8 @@ blajlkasjflkajslkñjdsalkj
 <p>ZZZZZ Opciones <b>CLOUDANT o ZZZZZZ n IBM Cloud</b>:</p>
 <ul>
 <li><a href="listar">Listar</a></li>
-<li><a href="insertar?palabra=hola">Insertar</a></li>
+<!-- <li><a href="insertar?palabra=hola">Insertar:</li> -->
+<li><a href="insertar">Insertar: <input type ="text" name ="palabra"></a><button> Guardar en Cloudant</button></li>
 </ul>
 </body>
 </html>
