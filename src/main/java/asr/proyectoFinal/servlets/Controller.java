@@ -62,7 +62,7 @@ public class Controller extends HttpServlet {
 					else
 					{
 						String palabraTraducida;
-						palabraTraducida = Traductor.translate(parametro, "es", "en", false);
+						//palabraTraducida = Traductor.translate(parametro, "es", "en", false);
 						// Traductor
 						//palabra.setName(palabraTraducida);
 						palabra.setName(parametro);
