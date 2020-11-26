@@ -18,6 +18,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ibm.cloud.sdk.core.service.exception.NotFoundException;
+import com.ibm.cloud.sdk.core.service.exception.RequestTooLargeException;
+import com.ibm.cloud.sdk.core.service.exception.ServiceResponseException;
+
 import asr.proyectoFinal.dao.CloudantPalabraStore;
 import asr.proyectoFinal.dominio.Palabra;
 import asr.proyectoFinal.services.Traductor;
@@ -63,10 +67,28 @@ public class Controller extends HttpServlet {
 					else
 					{
 						String palabraTraducida;
-						palabraTraducida = Traductor.translate(parametro, "es", "en", false,claveAPI);
+						try 
+						{
+							parametro = Traductor.translate(parametro, "es", "en", true,claveAPI);
+							  // Invoke a method
+						}
+						catch (NotFoundException e) 
+						{
+							  // Handle Not Found (404) exception
+							} 
+						catch (RequestTooLargeException e) {
+							  // Handle Request Too Large (413) exception
+							} 
+						catch (ServiceResponseException e) 
+						{
+							  // Base class for all exceptions caused by error responses from the service
+							  System.out.println("Service returned status code "
+							    + e.getStatusCode() + ": " + e.getMessage());
+							}
+						
 						// Traductor
-						palabra.setName(palabraTraducida);
-						//palabra.setName(parametro);
+						//palabra.setName(palabraTraducida);
+						palabra.setName(parametro);
 						store.persist(palabra);
 					    out.println(String.format("Almacenada la palabra: %s con la clave de API %s", palabra.getName(),claveAPI));			    	  
 					}
