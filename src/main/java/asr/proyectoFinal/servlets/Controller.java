@@ -48,6 +48,7 @@ public class Controller extends HttpServlet {
 			case "/insertar":
 				Palabra palabra = new Palabra();
 				String parametro = request.getParameter("palabra");
+				String claveAPI = request.getParameter("claveAPI");
 
 				if(parametro==null)
 				{
@@ -62,7 +63,7 @@ public class Controller extends HttpServlet {
 					else
 					{
 						String palabraTraducida;
-						//palabraTraducida = Traductor.translate(parametro, "es", "en", false);
+						palabraTraducida = Traductor.translate(parametro, "es", "en", false,claveAPI);
 						// Traductor
 						//palabra.setName(palabraTraducida);
 						palabra.setName(parametro);
