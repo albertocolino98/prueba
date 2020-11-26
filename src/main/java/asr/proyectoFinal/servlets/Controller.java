@@ -66,7 +66,7 @@ public class Controller extends HttpServlet {
 					}
 					else
 					{
-						
+						/*
 						try 
 						{
 							parametro = Traductor.translate(parametro, "es", "en", false,claveAPI);
@@ -77,6 +77,7 @@ public class Controller extends HttpServlet {
 							  // Base class for all exceptions caused by error responses from the service
 							  System.out.println("Service returned status code " + e.getMessage());
 						}
+						*/
 						
 						// Traductor
 						//palabra.setName(palabraTraducida);
