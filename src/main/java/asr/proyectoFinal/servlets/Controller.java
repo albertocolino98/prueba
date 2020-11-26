@@ -66,25 +66,17 @@ public class Controller extends HttpServlet {
 					}
 					else
 					{
-						String palabraTraducida;
+						
 						try 
 						{
-							parametro = Traductor.translate(parametro, "es", "en", true,claveAPI);
+							parametro = Traductor.translate(parametro, "es", "en", false,claveAPI);
 							  // Invoke a method
 						}
-						catch (NotFoundException e) 
-						{
-							  // Handle Not Found (404) exception
-							} 
-						catch (RequestTooLargeException e) {
-							  // Handle Request Too Large (413) exception
-							} 
-						catch (ServiceResponseException e) 
+						catch (Exception e) 
 						{
 							  // Base class for all exceptions caused by error responses from the service
-							  System.out.println("Service returned status code "
-							    + e.getStatusCode() + ": " + e.getMessage());
-							}
+							  System.out.println("Service returned status code " + e.getMessage());
+						}
 						
 						// Traductor
 						//palabra.setName(palabraTraducida);
