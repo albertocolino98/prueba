@@ -22,7 +22,7 @@ public class Traductor
 			model="en-es";
 		
 		Authenticator authenticator = new IamAuthenticator(claveAPI);
-		LanguageTranslator languageTranslator = new LanguageTranslator("2018-05-01",authenticator);
+		LanguageTranslator languageTranslator = new LanguageTranslator("2020-11-26",authenticator);
 		languageTranslator.setServiceUrl("https://api.eu-gb.language-translator.watson.cloud.ibm.com/instances/039169d7-53fc-41ae-98d1-48a3a6d26983");
 		TranslateOptions translateOptions = new TranslateOptions.Builder()
 		 .addText(palabra)
