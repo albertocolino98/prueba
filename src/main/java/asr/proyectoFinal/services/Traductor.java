@@ -33,7 +33,7 @@ public class Traductor
 		System.out.println(translationResult);
 		String traduccionJSON = translationResult.toString();
 		JsonParser aux = new JsonParser();
-		JsonObject rootObj = (JsonObject) aux.parse(traduccionJSON);
+		JsonObject rootObj = aux.parse(traduccionJSON).getAsJsonObject();
 		//JsonParser.parseString(traduccionJSON).getAsJsonObject();
 		
 		JsonArray traducciones = rootObj.getAsJsonArray("translations");
