@@ -81,7 +81,7 @@ public class Controller extends HttpServlet {
 						
 						// Traductor
 						//palabra.setName(palabraTraducida);
-						parametro = Traductor.translate(parametro, "es", "en",false, claveAPI);
+						//parametro = Traductor.translate(parametro, "es", "en",false, claveAPI);
 						palabra.setName(parametro);
 						store.persist(palabra);
 					    out.println(String.format("Almacenada la palabra: %s con la clave de API %s", palabra.getName(),claveAPI));			    	  
