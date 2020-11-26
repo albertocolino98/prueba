@@ -14,7 +14,7 @@ Practica 10b Albero Colino
 Otra modificacion4
 blajlkasjflkajslkñjdsalkj
 <p>ZZZZZ Opciones <b>CLOUDANT o ZZZZZZ n IBM Cloud</b>:</p>
-<form method ="GET" action ="Controller.java">
+<form method ="GET" action ="insertar">
 	<ul>
 
 	<li><a href="listar">Listar</a></li>
