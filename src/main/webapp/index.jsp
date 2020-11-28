@@ -20,7 +20,7 @@ blajlkasjflkajslkñjdsalkj
 	<li><a href="listar">Listar</a></li>
 	<!-- <li><a href="insertar?palabra=hola">Insertar:</li> -->
 	Clave API Nueva: </a><input type ="text" name ="claveAPI">
-	<li><a href="insertar">Insertar: </a><input type ="text" name ="palabra"><input type="submit" value="Guardar en Cloudant"></li>
+	<li><a href="AnalisisLP">Insertar: </a><input type ="text" name ="palabra"><input type="submit" value="Guardar en Cloudant"></li>
 	</ul>
 </form>
 </body>

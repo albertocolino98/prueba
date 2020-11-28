@@ -25,6 +25,7 @@ import com.ibm.cloud.sdk.core.service.exception.ServiceResponseException;
 import asr.proyectoFinal.dao.CloudantPalabraStore;
 import asr.proyectoFinal.dominio.Palabra;
 import asr.proyectoFinal.services.Traductor;
+import asr.proyectoFinal.services.AnalisisLP;
 
 /**
  * Servlet implementation class Controller
