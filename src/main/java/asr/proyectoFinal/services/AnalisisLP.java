@@ -17,7 +17,7 @@ public class AnalisisLP
 {	
 	public static void analizarLenguaje(String palabra, String sourceModel, String destModel,boolean conversational,String claveAPI)
 	{
-		IamAuthenticator authenticator = new IamAuthenticator("vdr4SSYw2p6T4m3JSJLsh06_NQcYaRRyx-eO3DyjntNr");
+		IamAuthenticator authenticator = new IamAuthenticator("N3COdkwNRA-fD2Xv2YZzAQK60ZIl1GKU5kxwNd_i9WvS");
 		NaturalLanguageUnderstanding naturalLanguageUnderstanding = new NaturalLanguageUnderstanding("2020-08-01", authenticator);
 		naturalLanguageUnderstanding.setServiceUrl("https://api.eu-gb.natural-language-understanding.watson.cloud.ibm.com/instances/9187d922-8411-4e6c-8378-5610426c76f1");
 
