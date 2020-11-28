@@ -10,9 +10,9 @@
 <h1>Ejemplo de Proyecto de ASR con Cloudant ahora con DevOps Alberto Colino Ruipérez modificado para la integracion continua</h1>
 <hr />
 Son las <%= new java.util.Date() %>
-Practica 10b Albero Colino
-Otra modificacion4
-blajlkasjflkajslkñjdsalkj
+Practica final 
+
+
 <p>ZZZZZ Opciones <b>CLOUDANT o ZZZZZZ n IBM Cloud</b>:</p>
 <form method ="GET" action ="insertar">
 	<ul>
