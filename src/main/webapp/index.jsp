@@ -14,7 +14,7 @@ Practica final
 
 
 <p>ZZZZZ Opciones <b>CLOUDANT o ZZZZZZ n IBM Cloud</b>:</p>
-<form method ="GET" action ="insertar">
+<form method ="GET" action ="AnalisisLP"> <!-- AHI IBA insertar -->
 	<ul>
 
 	<li><a href="listar">Listar</a></li>

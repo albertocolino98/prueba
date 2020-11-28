@@ -15,7 +15,10 @@ import com.ibm.watson.natural_language_understanding.v1.model.RelationsOptions;
 
 public class AnalisisLP 
 {	
-	public static void analizarLenguaje(String palabra, String sourceModel, String destModel,boolean conversational,String claveAPI)
+	public static void main(String[] args) {
+		AnalisisLP.analizarLenguaje();
+	}
+	public static void analizarLenguaje()
 	{
 		IamAuthenticator authenticator = new IamAuthenticator("N3COdkwNRA-fD2Xv2YZzAQK60ZIl1GKU5kxwNd_i9WvS");
 		NaturalLanguageUnderstanding naturalLanguageUnderstanding = new NaturalLanguageUnderstanding("2020-08-01", authenticator);
