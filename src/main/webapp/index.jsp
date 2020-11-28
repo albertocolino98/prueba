@@ -10,17 +10,17 @@
 <h1>Ejemplo de Proyecto de ASR con Cloudant ahora con DevOps Alberto Colino Ruipérez modificado para la integracion continua</h1>
 <hr />
 Son las <%= new java.util.Date() %>
-Practica final 
-
-
+Practica Final
 <p>ZZZZZ Opciones <b>CLOUDANT o ZZZZZZ n IBM Cloud</b>:</p>
-<form method ="GET" action ="AnalisisLP"> <!-- AHI IBA insertar -->
+<form method ="GET" action ="insertar">
 	<ul>
 
 	<li><a href="listar">Listar</a></li>
+	
 	<!-- <li><a href="insertar?palabra=hola">Insertar:</li> -->
-	Clave API Nueva: </a><input type ="text" name ="claveAPI">
-	<li><a href="AnalisisLP">Insertar: </a><input type ="text" name ="palabra"><input type="submit" value="Guardar en Cloudant"></li>
+	<li>Clave API Nueva: <input type ="text" name ="claveAPI"></li>
+	
+	<li><a href="insertar">Insertar: </a><input type ="text" name ="palabra"><input type="submit" value="Guardar en Cloudant"></li>
 	</ul>
 </form>
 </body>

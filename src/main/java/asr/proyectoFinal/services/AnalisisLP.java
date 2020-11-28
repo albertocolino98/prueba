@@ -15,10 +15,12 @@ import com.ibm.watson.natural_language_understanding.v1.model.RelationsOptions;
 
 public class AnalisisLP 
 {	
+	/*
 	public static void main(String[] args) {
 		AnalisisLP.analizarLenguaje();
 	}
-	public static void analizarLenguaje()
+	*/
+	public static String analizarLenguaje()
 	{
 		IamAuthenticator authenticator = new IamAuthenticator("N3COdkwNRA-fD2Xv2YZzAQK60ZIl1GKU5kxwNd_i9WvS");
 		NaturalLanguageUnderstanding naturalLanguageUnderstanding = new NaturalLanguageUnderstanding("2020-08-01", authenticator);
@@ -46,8 +48,9 @@ public class AnalisisLP
 		
 		
 		System.out.println(response);
-		String palabra2 =  "hola";
-		//return palabra2;
+		String traduccionJSON = response.toString();
+		
+		return traduccionJSON;
 	}
 
 }
