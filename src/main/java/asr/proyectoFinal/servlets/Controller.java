@@ -82,11 +82,13 @@ public class Controller extends HttpServlet {
 						
 						// Traductor
 						//palabra.setName(palabraTraducida);
+						String resultadoNLP;
+						resultadoNLP = AnalisisLP.analizarLenguaje(parametro,"es");
 						parametro = Traductor.translate(parametro, "es", "en",false, claveAPI);
 						palabra.setName(parametro);
 						store.persist(palabra);
-						String resultadoNLP;
-						resultadoNLP = AnalisisLP.analizarLenguaje();
+						
+						
 						out.println(String.format("ResultadoNLP: %s", resultadoNLP));	
 						out.println(String.format("Almacenada la palabra: %s con la clave de API %s", palabra.getName(),claveAPI));			    	  
 					}
