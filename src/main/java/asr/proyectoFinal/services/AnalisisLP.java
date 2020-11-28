@@ -73,18 +73,19 @@ public class AnalisisLP
 		
 		JsonObject rootObj = JsonParser.parseString(traduccionJSON).getAsJsonObject();
 		
-		JsonArray analisisNLP = rootObj.getAsJsonArray("keywords");
+		//JsonArray analisisNLP = rootObj.getAsJsonArray("keywords");
 		
 		String analisisConcreto = "NO se ha encontrado tu JSON";
 		
+		/*
 		if(analisisNLP.size()>0)
 			analisisConcreto =	analisisNLP.get(0).getAsJsonObject().get("emotion").getAsString();
-	
+		 */
 		
 		System.out.println(response);
 		
-		return analisisConcreto;
-		//return traduccionJSON;
+		//return analisisConcreto;
+		return traduccionJSON;
 	}
 
 }
