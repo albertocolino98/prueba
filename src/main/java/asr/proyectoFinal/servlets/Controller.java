@@ -26,30 +26,62 @@ import asr.proyectoFinal.dao.CloudantPalabraStore;
 import asr.proyectoFinal.dominio.Palabra;
 import asr.proyectoFinal.services.Traductor;
 import asr.proyectoFinal.services.AnalisisLP;
-
+import java.util.Collection;
 /**
  * Servlet implementation class Controller
  */
-@WebServlet(urlPatterns = {"/listar", "/insertar", "/hablar"})
+@WebServlet(urlPatterns = {"/listar", "/insertar", "/hablar","/analizar"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		PrintWriter out = response.getWriter();
-		out.println("<html><head><meta charset=\"UTF-8\"></head><body>");
+		//out.println("<html><head><meta charset=\"UTF-8\"></head><body>");
 		
 		CloudantPalabraStore store = new CloudantPalabraStore();
 		System.out.println(request.getServletPath());
 		switch(request.getServletPath())
 		{
 			case "/listar":
+				/*
 				if(store.getDB() == null)
-					  out.println("No hay DB");
+					  
 				else
-					out.println("Palabras en la BD Cloudant:<br />" + store.getAll());
+//					out.println("Palabras en la BD Cloudant:<br />" + store.getAll());
 				break;
+				*/
+				String msg = request.getParameter("mensaje");
+				String isTraducido = request.getParameter("isTraducido");
+				String nombre = request.getParameter("nombre");
+				String msgGuardar = nombre + " : " + msg ;
+				Palabra palabra = new Palabra();
+								
+							
+				if(isTraducido=="1")
+				{
+					msg = Traductor.translate(msg, "es", "en",false, "");
+					String msgGuardar2 = nombre + " : " + msg ;
+					palabra.setName(msgGuardar2);
+					store.persist(palabra);
+				}
+				else
+				{
+					palabra.setName(msgGuardar);
+					store.persist(palabra);
+				}
 				
+				//out.println(String.format("%s : %s",nombre, msg));
+				out.println(store.getAll());
+			break;
+			case "/analizar":
+				String msg2 = request.getParameter("mensaje");
+			
+				String resultadoNLP ="";				
+				resultadoNLP = AnalisisLP.analizarLenguaje(msg2,"es");
+				out.println(String.format("%s", resultadoNLP));
+			break;
+			/*	
 			case "/insertar":
 				Palabra palabra = new Palabra();
 				String parametro = request.getParameter("palabra");
@@ -67,20 +99,7 @@ public class Controller extends HttpServlet {
 					}
 					else
 					{
-						/*
-						try 
-						{
-							
-							  // Invoke a method
-						}
-						catch (Exception e) 
-						{
-							  // Base class for all exceptions caused by error responses from the service
-							  System.out.println("Service returned status code " + e.getMessage());
-						}
-						*/
 						
-						// Traductor
 						//palabra.setName(palabraTraducida);
 						String resultadoNLP;
 						//resultadoNLP = AnalisisLP.analizarLenguaje(parametro,"es");
@@ -92,9 +111,12 @@ public class Controller extends HttpServlet {
 						out.println(String.format("Almacenada la palabra: %s con la clave de API %s", palabra.getName(),claveAPI));			    	  
 					}
 				}
+				
 				break;
+				*/
+				
 		}
-		out.println("</html>");
+		//out.println("</html>");
 	}
 
 	/**

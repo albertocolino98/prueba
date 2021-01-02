@@ -4,54 +4,83 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
-	<title>Practica final ASR	</title>
-	<!-- 
+	<title>Práctica final ASR	</title>
+	 
 	<script>
-		$("#btn_add").click( function() 
+		function pulsado(tipo) 
 	    {  
-		   var postData = $("#formdata").serialize();
-           postData[postData.length] = { name: "tok", value: tok };
-           $.post(servidor+"crearnecesidad.php",data,function(res){
-               if(res == 1){
-                   window.location = "main.html?tok="+tok;
-               }else{
-                   alert(res);
-                   
-               }
-           });
-	            
-	        }else{
-	            alert("Complete los campos obligatorios")
-	        }
-	
-	    });
+			
+			//return false;
+			
+			var tipo2 = tipo.toString();
+			var dataEnvio = $("#idForm").serialize() + "&nombre=" + localStorage.getItem("nombre") + "&isTraducido="+tipo2;
+			$.get('listar', dataEnvio , function(data) 
+			{
+			     //msge = localStorage.getItem("nombre") + ": " + data;
+			     
+				 var quote = $('#caja').text();   
+		         $('#caja').val(quote + data);
+		         
+		         //$('#mensaje').val("");  		         $("#mensaje").focus(); 
+		     		         
+		         $.get('analizar', dataEnvio , function(data2) 
+     			 {     			        			     
+     				 $('#caja2').val(data2);
+     		         $('#mensaje').val("");
+     		         $("#mensaje").focus(); 
+            	 });
+           			
+       		});
+ 		  	
+	    }
+		function nombreUser()
+		{
+			
+			while(nombre==null ||nombre=="" )
+			{
+				var nombre = prompt("Cual es tu nombre?", "");
+				localStorage.setItem("nombre", nombre);
+				$("#mensaje").focus(); 
+				
+			}
+			
+		}
     </script>
-     -->
+     
 </head>
-<body>
-	<h1>Ejemplo de Proyecto de ASR con Cloudant ahora con DevOps Alberto Colino Ruipérez modificado para la integracion continua</h1>
+<body onload ="nombreUser();">
+	<h1> Practica Final ASR Ana Urbistondo y Alberto Colino</h1>
 	<hr />
-		Son las <%= new java.util.Date() %>
-		Practica Traductor
-		<p>ZZZZZ Opciones <b>CLOUDANT o ZZZZZZ n IBM Cloud</b>:</p>
-		
-	<form method ="GET" action ="insertar">
+	<div style ="margin-left:10%; margin-right:15%">
+		<div  style ="width:85%;" >
+			<textarea  style ="width:100%;"  rows="20" cols="20" id="caja"></textarea>
+			<textarea style ="width:65%; display:inline-block" rows="10" cols="20" id="caja2"></textarea> 
+		</div>	
+		<form method ="GET" action ="insertar" id ="idForm">
+		<br>
+			<div>
+				<input style ="width:50%" type="text" id ="mensaje" name ="mensaje" placeholder="Escribe un mensaje">
+				<button id ="btn_add" onclick="pulsado(1); return false" data-ignore="push"> Enviar </button>
+				<button id ="btn_add" onclick="pulsado(0); return false" data-ignore="push"> Enviar traducido </button>
+			</div>	
+		</form>
+	</div>
+		<!-- 
 		<ul>	
 			<li><a href="listar">Listar</a></li>
 			
-			<!-- <li><a href="insertar?palabra=hola">Insertar:</li> -->
+			<!-- <li><a href="insertar?palabra=hola">Insertar:</li> 
 			<li>Clave API Nueva: <input type ="text" name ="claveAPI"></li>
 			
 			<li><a href="insertar">Insertar: </a><input type ="text" name ="palabra"><input type="submit" value="Guardar en Cloudant"></li>
 		</ul>
-	</form>
-	<textarea rows="2" cols="10">
+		 -->
 	
-	</textarea>
-	<button id ="btn_add"> Boton </button>
+
+	
 </body>
 </html>
