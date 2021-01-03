@@ -77,12 +77,12 @@ public class AnalisisLP
 		
 		String analisisConcreto = "NO se ha encontrado tu JSON";
 		
-		
+		/*
 		if(analisisNLP.size()>0)
 			analisisConcreto =	analisisNLP.get(0).getAsJsonObject().get("sentiment").getAsString();
-		 
+		 */
 		
-		System.out.println(response);
+		//System.out.println(response);
 		
 		//return analisisConcreto;
 		return traduccionJSON;

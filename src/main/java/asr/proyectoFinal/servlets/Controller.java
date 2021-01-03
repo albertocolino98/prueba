@@ -55,23 +55,14 @@ public class Controller extends HttpServlet {
 				
 										
 				String isTraducido = request.getParameter("isTraducido");
-				Palabra palabra = new Palabra();
-				String msg = request.getParameter("mensaje");
-				
-				String nombre = request.getParameter("nombre");
-				String msgTraducido = Traductor.translate(msg, "es", "en",false, "");
-				String msgGuardar2 = nombre + " : " + msgTraducido + " traducido";
-				palabra.setName(msgGuardar2);
-				store.persist(palabra);
-				/*
-				if(isTraducido == "1")
+				if(isTraducido == "traducir")
 				{
 					Palabra palabra = new Palabra();
 					String msg = request.getParameter("mensaje");
 					
 					String nombre = request.getParameter("nombre");
 					String msgTraducido = Traductor.translate(msg, "es", "en",false, "");
-					String msgGuardar2 = nombre + " : " + msgTraducido + " traducido";
+					String msgGuardar2 = nombre + " : " + msgTraducido + isTraducido;
 					palabra.setName(msgGuardar2);
 					store.persist(palabra);
 				}
@@ -79,18 +70,18 @@ public class Controller extends HttpServlet {
 				{
 					String msg = request.getParameter("mensaje");
 					String nombre = request.getParameter("nombre");
-					String msgGuardar = nombre + " : " + msg + "<br>";
+					String msgGuardar = nombre + " : " + msg + isTraducido;
 					Palabra palabra2 = new Palabra();
 					palabra2.setName(msgGuardar);					
 					store.persist(palabra2);
 				}
-				*/
 				
 				//out.println(String.format("%s : %s",nombre, msg));
 				out.println(store.getAll());
 			break;
 			case "/analizar":
 				String msg2 = request.getParameter("mensaje");
+				msg2="me gusta mucho el futbol";
 			
 				String resultadoNLP ="";				
 				resultadoNLP = AnalisisLP.analizarLenguaje(msg2,"es");

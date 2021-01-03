@@ -17,6 +17,11 @@
 			//return false;
 			
 			var tipo2 = tipo.toString();
+			if(tipo2=="1"){
+				tipo2="traducir";
+			}else{
+				tipo2="no";
+			}
 			console.log(tipo2);
 			var dataEnvio = $("#idForm").serialize() + "&nombre=" + localStorage.getItem("nombre") + "&isTraducido="+tipo2;
 			$.get('listar', dataEnvio , function(data) 
