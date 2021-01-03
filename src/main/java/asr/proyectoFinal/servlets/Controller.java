@@ -53,8 +53,10 @@ public class Controller extends HttpServlet {
 				Collection<Palabra> coleccion = store.getAll();
 				String resultado =coleccion.toString();		
 				resultado = resultado.replaceAll(",", "");
+				/*
 				resultado = resultado.replaceAll("[", "");
 				resultado = resultado.replaceAll("]", "");
+				*/
 				
 				out.println(resultado);
 			break;
