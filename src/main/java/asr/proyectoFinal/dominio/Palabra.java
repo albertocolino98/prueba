@@ -88,7 +88,7 @@ public class Palabra {
 	@Override
 	public String toString()
 	{
-		return name + "<br>";
+		return name + "\n";
 	}
 
 }

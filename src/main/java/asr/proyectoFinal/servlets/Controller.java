@@ -37,7 +37,7 @@ public class Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		PrintWriter out = response.getWriter();
-		out.println("<div>");
+		//out.println("<div>");
 		
 		CloudantPalabraStore store = new CloudantPalabraStore();
 		//System.out.println(request.getServletPath());
@@ -79,7 +79,7 @@ public class Controller extends HttpServlet {
 				out.println(resultado2);
 			break;			
 		}
-		out.println("</div>");
+		//out.println("</div>");
 	}
 
 	/**

@@ -16,7 +16,8 @@
 			
 			var dataEnvio = $("#idForm").serialize() + "&nombre=" + localStorage.getItem("nombre");
 			$.get('listar', dataEnvio , function(data) 
-			{				 
+			{			
+				 alert(data);
 		         $('#caja').val($('#caja').text() + data);
 		         
 		         $('#mensaje').val("");  
