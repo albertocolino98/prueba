@@ -30,7 +30,7 @@ import java.util.Collection;
 /**
  * Servlet implementation class Controller
  */
-@WebServlet(urlPatterns = {"/listar", "/insertar", "/hablar","/analizar" , "/traducir"})
+@WebServlet(urlPatterns = {"/listar", "/insertar", "/hablar","/analizar"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -44,42 +44,42 @@ public class Controller extends HttpServlet {
 		switch(request.getServletPath())
 		{
 			case "/listar":
+				/*
+				if(store.getDB() == null)
+					  
+				else
+//					out.println("Palabras en la BD Cloudant:<br />" + store.getAll());
+				break;
+				*/
 				String msg = request.getParameter("mensaje");
 				String isTraducido = request.getParameter("isTraducido");
 				String nombre = request.getParameter("nombre");
-				String msgGuardar = nombre + " : " + msg + "<br>";
-				Palabra palabra = new Palabra();								
+				String msgGuardar = nombre + " : " + msg ;
+				Palabra palabra = new Palabra();
+								
 							
 				if(isTraducido=="1")
 				{
 					msg = Traductor.translate(msg, "es", "en",false, "");
-					String msgGuardar2 = nombre + " : " + msg + "<br>";
+					String msgGuardar2 = nombre + " : " + msg ;
 					palabra.setName(msgGuardar2);
 					store.persist(palabra);
 				}
-				else if(isTraducido=="0")
+				else
 				{
 					palabra.setName(msgGuardar);
 					store.persist(palabra);
-				}
-				else {
-					String resultadoNLP ="";				
-					resultadoNLP = AnalisisLP.analizarLenguaje(msg,"es");
-					out.println(String.format("%s", resultadoNLP));
 				}
 				
 				//out.println(String.format("%s : %s",nombre, msg));
 				out.println(store.getAll());
 			break;
-			case "/traducir":
+			case "/analizar":
 				String msg2 = request.getParameter("mensaje");
-				Palabra palabra2 = new Palabra();
-				msg2 = Traductor.translate(msg2, "es", "en",false, "");
-				palabra2.setName(msg2);
-				store.persist(palabra2);
-				
-				out.println(String.format("ResultadoTraducion: %s", msg2));	
-				out.println(String.format("Almacenada la palabra: %s ", palabra2.getName()));			    	  
+			
+				String resultadoNLP ="";				
+				resultadoNLP = AnalisisLP.analizarLenguaje(msg2,"es");
+				out.println(String.format("%s", resultadoNLP));
 			break;
 			/*	
 			case "/insertar":

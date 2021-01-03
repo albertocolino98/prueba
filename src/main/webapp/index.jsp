@@ -13,23 +13,26 @@
 	<script>
 		function pulsado(tipo) 
 	    {  
-			var tipo2 = tipo.toString();
-			console.log(tipo2);
 			
+			//return false;
+			
+			var tipo2 = tipo.toString();
 			var dataEnvio = $("#idForm").serialize() + "&nombre=" + localStorage.getItem("nombre") + "&isTraducido="+tipo2;
 			$.get('listar', dataEnvio , function(data) 
 			{
-				console.log(data);
-			     var quote = $('#caja').text(); 
-				 if(tipo2 == "2"){
-					$('#caja2').val(data);
-				 }					 
-				 else{
-					$('#caja').val(quote + data); 
-				 }	         		
-				 
-		         $('#mensaje').val("");  		         
-		         $("#mensaje").focus();     	
+			     //msge = localStorage.getItem("nombre") + ": " + data;
+			     
+				 var quote = $('#caja').text();   
+		         $('#caja').val(quote + data);
+		         
+		         //$('#mensaje').val("");  		         $("#mensaje").focus(); 
+		     		         
+		         $.get('analizar', dataEnvio , function(data2) 
+     			 {     			        			     
+     				 $('#caja2').val(data2);
+     		         $('#mensaje').val("");
+     		         $("#mensaje").focus(); 
+            	 });
            			
        		});
  		  	
@@ -57,13 +60,13 @@
 			<textarea  style ="width:100%;"  rows="20" cols="20" id="caja"></textarea>
 			<textarea style ="width:65%; display:inline-block" rows="10" cols="20" id="caja2"></textarea> 
 		</div>	
-		<form method ="GET" action ="listar" id ="idForm">
+		<form method ="GET" action ="insertar" id ="idForm">
 		<br>
 			<div>
 				<input style ="width:50%" type="text" id ="mensaje" name ="mensaje" placeholder="Escribe un mensaje">
-				<button id ="btn_add" onclick="pulsado(0); return false" data-ignore="push"> Enviar </button>
-				<button id ="btn_add2" onclick="pulsado(1); return false" data-ignore="push"> Enviar traducido </button>
-				<button id ="btn_add2" onclick="pulsado(2); return false" data-ignore="push"> NLP </button>
+				<button id ="btn_add" onclick="pulsado(1); return false" data-ignore="push"> Enviar </button>
+				<button id ="btn_add" onclick="pulsado(0); return false" data-ignore="push"> Enviar traducido </button>
+				
 			</div>	
 		</form>
 	</div>
