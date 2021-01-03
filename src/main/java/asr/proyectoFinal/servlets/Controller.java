@@ -30,55 +30,32 @@ import java.util.Collection;
 /**
  * Servlet implementation class Controller
  */
-@WebServlet(urlPatterns = {"/listar", "/insertar", "/hablar","/analizar"})
+@WebServlet(urlPatterns = {"/listar", "/insertar", "/traducir","/analizar"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		PrintWriter out = response.getWriter();
-		//out.println("<html><head><meta charset=\"UTF-8\"></head><body>");
+		out.println("<div>");
 		
 		CloudantPalabraStore store = new CloudantPalabraStore();
-		System.out.println(request.getServletPath());
+		//System.out.println(request.getServletPath());
 		switch(request.getServletPath())
 		{
-			case "/listar":
-				/*
-				if(store.getDB() == null)
-					  
-				else
-//					out.println("Palabras en la BD Cloudant:<br />" + store.getAll());
-				break;
-				*/
+			case "/listar":				
+				String msg = request.getParameter("mensaje");
+				String nombre = request.getParameter("nombre");
+				String msgGuardar = nombre + " : " + msg ;
+				Palabra palabra2 = new Palabra();
+				palabra2.setName(msgGuardar);					
+				store.persist(palabra2);
+				Collection<Palabra> coleccion = store.getAll();
+				String resultado =coleccion.toString();				
 				
-				
-										
-				String isTraducido = request.getParameter("isTraducido");
-				if(isTraducido == "traducir")
-				{
-					Palabra palabra = new Palabra();
-					String msg = request.getParameter("mensaje");
-					
-					String nombre = request.getParameter("nombre");
-					String msgTraducido = Traductor.translate(msg, "es", "en",false, "");
-					String msgGuardar2 = nombre + " : " + msgTraducido + isTraducido;
-					palabra.setName(msgGuardar2);
-					store.persist(palabra);
-				}
-				else
-				{
-					String msg = request.getParameter("mensaje");
-					String nombre = request.getParameter("nombre");
-					String msgGuardar = nombre + " : " + msg + isTraducido;
-					Palabra palabra2 = new Palabra();
-					palabra2.setName(msgGuardar);					
-					store.persist(palabra2);
-				}
-				
-				//out.println(String.format("%s : %s",nombre, msg));
-				out.println(store.getAll());
+				out.println(resultado);
 			break;
+			
 			case "/analizar":
 				String msg2 = request.getParameter("mensaje");
 				msg2="me gusta mucho el futbol";
@@ -86,43 +63,23 @@ public class Controller extends HttpServlet {
 				String resultadoNLP ="";				
 				resultadoNLP = AnalisisLP.analizarLenguaje(msg2,"es");
 				out.println(String.format("%s", resultadoNLP));
-			break;
-			/*	
-			case "/insertar":
+			break;	
+			
+			case "/traducir":
 				Palabra palabra = new Palabra();
-				String parametro = request.getParameter("palabra");
-				String claveAPI = request.getParameter("claveAPI");
-
-				if(parametro==null)
-				{
-					out.println("usage: /insertar?palabra=palabra_a_traducir");
-				}
-				else
-				{
-					if(store.getDB() == null) 
-					{
-						out.println(String.format("Palabra: %s", palabra));
-					}
-					else
-					{
-						
-						//palabra.setName(palabraTraducida);
-						String resultadoNLP;
-						//resultadoNLP = AnalisisLP.analizarLenguaje(parametro,"es");
-						parametro = Traductor.translate(parametro, "es", "en",false, claveAPI);
-						palabra.setName(parametro);
-						store.persist(palabra);
-						
-						out.println(String.format("ResultadoTraducion: %s", parametro));	
-						out.println(String.format("Almacenada la palabra: %s con la clave de API %s", palabra.getName(),claveAPI));			    	  
-					}
-				}
+				String msg3 = request.getParameter("mensaje");
 				
-				break;
-				*/
-				
+				String nombre2 = request.getParameter("nombre");
+				String msgTraducido = Traductor.translate(msg3, "es", "en",false, "");
+				String msgGuardar2 = nombre2 + " : " + msgTraducido;
+				palabra.setName(msgGuardar2);
+				store.persist(palabra);
+				Collection<Palabra> coleccion2 = store.getAll();
+				String resultado2 =coleccion2.toString();	
+				out.println(resultado2);
+			break;			
 		}
-		//out.println("</html>");
+		out.println("</div>");
 	}
 
 	/**
