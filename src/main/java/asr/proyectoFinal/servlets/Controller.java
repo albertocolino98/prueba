@@ -30,7 +30,7 @@ import java.util.Collection;
 /**
  * Servlet implementation class Controller
  */
-@WebServlet(urlPatterns = {"/listar", "/insertar", "/hablar","/analizar"})
+@WebServlet(urlPatterns = {"/listar", "/insertar", "/hablar","/analizar" , "/traducir"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -44,24 +44,16 @@ public class Controller extends HttpServlet {
 		switch(request.getServletPath())
 		{
 			case "/listar":
-				/*
-				if(store.getDB() == null)
-					  
-				else
-//					out.println("Palabras en la BD Cloudant:<br />" + store.getAll());
-				break;
-				*/
 				String msg = request.getParameter("mensaje");
 				String isTraducido = request.getParameter("isTraducido");
 				String nombre = request.getParameter("nombre");
-				String msgGuardar = nombre + " : " + msg ;
-				Palabra palabra = new Palabra();
-								
+				String msgGuardar = nombre + " : " + msg + "<br>";
+				Palabra palabra = new Palabra();								
 							
 				if(isTraducido=="1")
 				{
 					msg = Traductor.translate(msg, "es", "en",false, "");
-					String msgGuardar2 = nombre + " : " + msg ;
+					String msgGuardar2 = nombre + " : " + msg + "<br>";
 					palabra.setName(msgGuardar2);
 					store.persist(palabra);
 				}
@@ -79,8 +71,15 @@ public class Controller extends HttpServlet {
 				//out.println(String.format("%s : %s",nombre, msg));
 				out.println(store.getAll());
 			break;
-			case "/analizar":
+			case "/traducir":
+				String msg2 = request.getParameter("mensaje");
+				Palabra palabra2 = new Palabra();
+				msg2 = Traductor.translate(msg2, "es", "en",false, "");
+				palabra2.setName(msg2);
+				store.persist(palabra2);
 				
+				out.println(String.format("ResultadoTraducion: %s", msg2));	
+				out.println(String.format("Almacenada la palabra: %s ", palabra2.getName()));			    	  
 			break;
 			/*	
 			case "/insertar":
