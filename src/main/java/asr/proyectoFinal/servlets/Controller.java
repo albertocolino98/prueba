@@ -65,21 +65,22 @@ public class Controller extends HttpServlet {
 					palabra.setName(msgGuardar2);
 					store.persist(palabra);
 				}
-				else
+				else if(isTraducido=="0")
 				{
 					palabra.setName(msgGuardar);
 					store.persist(palabra);
+				}
+				else {
+					String resultadoNLP ="";				
+					resultadoNLP = AnalisisLP.analizarLenguaje(msg,"es");
+					out.println(String.format("%s", resultadoNLP));
 				}
 				
 				//out.println(String.format("%s : %s",nombre, msg));
 				out.println(store.getAll());
 			break;
 			case "/analizar":
-				String msg2 = request.getParameter("mensaje");
-			
-				String resultadoNLP ="";				
-				resultadoNLP = AnalisisLP.analizarLenguaje(msg2,"es");
-				out.println(String.format("%s", resultadoNLP));
+				
 			break;
 			/*	
 			case "/insertar":
