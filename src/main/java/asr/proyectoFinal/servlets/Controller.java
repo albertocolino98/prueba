@@ -54,14 +54,14 @@ public class Controller extends HttpServlet {
 				String msg = request.getParameter("mensaje");
 				String isTraducido = request.getParameter("isTraducido");
 				String nombre = request.getParameter("nombre");
-				String msgGuardar = nombre + " : " + msg ;
+				String msgGuardar = nombre + " : " + msg + "<br>";
 				Palabra palabra = new Palabra();
 								
 							
 				if(isTraducido=="1")
 				{
 					msg = Traductor.translate(msg, "es", "en",false, "");
-					String msgGuardar2 = nombre + " : " + msg ;
+					String msgGuardar2 = nombre + " : " + msg + "<br>";
 					palabra.setName(msgGuardar2);
 					store.persist(palabra);
 				}

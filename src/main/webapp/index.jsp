@@ -17,6 +17,7 @@
 			//return false;
 			
 			var tipo2 = tipo.toString();
+			console.log(tipo2);
 			var dataEnvio = $("#idForm").serialize() + "&nombre=" + localStorage.getItem("nombre") + "&isTraducido="+tipo2;
 			$.get('listar', dataEnvio , function(data) 
 			{
@@ -25,14 +26,9 @@
 				 var quote = $('#caja').text();   
 		         $('#caja').val(quote + data);
 		         
-		         //$('#mensaje').val("");  		         $("#mensaje").focus(); 
-		     		         
-		         $.get('analizar', dataEnvio , function(data2) 
-     			 {     			        			     
-     				 $('#caja2').val(data2);
-     		         $('#mensaje').val("");
-     		         $("#mensaje").focus(); 
-            	 });
+		         $('#mensaje').val("");  
+		         $("#mensaje").focus(); 
+		     	
            			
        		});
  		  	
@@ -64,8 +60,8 @@
 		<br>
 			<div>
 				<input style ="width:50%" type="text" id ="mensaje" name ="mensaje" placeholder="Escribe un mensaje">
-				<button id ="btn_add" onclick="pulsado(1); return false" data-ignore="push"> Enviar </button>
-				<button id ="btn_add" onclick="pulsado(0); return false" data-ignore="push"> Enviar traducido </button>
+				<button id ="btn_add" onclick="pulsado(0); return false" data-ignore="push"> Enviar </button>
+				<button id ="btn_add" onclick="pulsado(1); return false" data-ignore="push"> Enviar traducido </button>
 				
 			</div>	
 		</form>
