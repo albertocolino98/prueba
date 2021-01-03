@@ -51,7 +51,10 @@ public class Controller extends HttpServlet {
 				palabra2.setName(msgGuardar);					
 				store.persist(palabra2);
 				Collection<Palabra> coleccion = store.getAll();
-				String resultado =coleccion.toString();				
+				String resultado =coleccion.toString();		
+				resultado = resultado.replaceAll(",", "");
+				resultado = resultado.replaceAll("[", "");
+				resultado = resultado.replaceAll("]", "");
 				
 				out.println(resultado);
 			break;
