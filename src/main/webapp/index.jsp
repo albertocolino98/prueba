@@ -35,7 +35,7 @@
 	    }
 		function pulsado2()
 		{
-			$.get('analizar', $("#idForm").serialize() , function(data2) 
+			$.get('analizar', {"mensaje" : $('#mensaje').val() }, function(data2) 
 					{		     
 					     
 						 
