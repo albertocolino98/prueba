@@ -33,6 +33,19 @@
        		});
  		  	
 	    }
+		function pulsado2()
+		{
+			$.get('analizar', $("#idForm").serialize() , function(data2) 
+					{		     
+					     
+						 
+				         $('#caja2').val(data2);				         
+				         $('#mensaje').val("");  
+				         $("#mensaje").focus(); 
+				     	
+		           			
+		       		});
+		}
 		function nombreUser()
 		{
 			
@@ -61,7 +74,8 @@
 			<div>
 				<input style ="width:50%" type="text" id ="mensaje" name ="mensaje" placeholder="Escribe un mensaje">
 				<button id ="btn_add" onclick="pulsado(0); return false" data-ignore="push"> Enviar </button>
-				<button id ="btn_add" onclick="pulsado(1); return false" data-ignore="push"> Enviar traducido </button>
+				<button id ="btn_add2" onclick="pulsado(1); return false" data-ignore="push"> Enviar traducido </button>
+				<button id ="btn_add3" onclick="pulsado2(); return false" data-ignore="push"> NLP</button>
 				
 			</div>	
 		</form>

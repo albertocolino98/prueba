@@ -51,24 +51,29 @@ public class Controller extends HttpServlet {
 //					out.println("Palabras en la BD Cloudant:<br />" + store.getAll());
 				break;
 				*/
-				String msg = request.getParameter("mensaje");
+				
+				
+										
 				String isTraducido = request.getParameter("isTraducido");
-				String nombre = request.getParameter("nombre");
-				String msgGuardar = nombre + " : " + msg + "<br>";
-				Palabra palabra = new Palabra();
-								
-							
 				if(isTraducido=="1")
 				{
-					msg = Traductor.translate(msg, "es", "en",false, "");
-					String msgGuardar2 = nombre + " : " + msg + "<br>";
+					Palabra palabra = new Palabra();
+					String msg = request.getParameter("mensaje");
+					
+					String nombre = request.getParameter("nombre");
+					String msgTraducido = Traductor.translate(msg, "es", "en",false, "");
+					String msgGuardar2 = nombre + " : " + msgTraducido + " traducido";
 					palabra.setName(msgGuardar2);
 					store.persist(palabra);
 				}
 				else
 				{
-					palabra.setName(msgGuardar);
-					store.persist(palabra);
+					String msg = request.getParameter("mensaje");
+					String nombre = request.getParameter("nombre");
+					String msgGuardar = nombre + " : " + msg + "<br>";
+					Palabra palabra2 = new Palabra();
+					palabra2.setName(msgGuardar);					
+					store.persist(palabra2);
 				}
 				
 				//out.println(String.format("%s : %s",nombre, msg));
