@@ -80,7 +80,7 @@
     </script>
      
 </head>
-<body  style =" background-color:#d8f0fb">
+<body  onload="nombreUser();" style =" background-color:#d8f0fb">
 	<center>
 	<h1> Practica Final ASR </h1>
 	<h2>Ana Urbistondo y Alberto Colino</h2>
