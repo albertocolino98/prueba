@@ -4,12 +4,26 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<title>Práctica final ASR	</title>
-	 
+	 <style>
+	 input[type=text], select {
+	  width: 100%;
+	  padding: 12px 20px;
+	  margin: 8px 0;
+	  display: inline-block;
+	  border: 1px solid #ccc;
+	  border-radius: 4px;
+	  box-sizing: border-box;
+	}
+	 </style>
 	<script>
 		function pulsado() 
 	    {  
@@ -41,11 +55,12 @@
 		}
 		function pulsado2()
 		{
-			$.get('analizar', {"mensaje" : $('#mensaje').val() }, function(data2) 
+			alert($('#mensaje').val());
+			$.get('analizar', $("#idForm").serialize(), function(data2) 
 			{	
 				$('#caja2').val(data2);				         
 	         	$('#mensaje').val("");  
-		         $("#mensaje").focus(); 
+		        $("#mensaje").focus(); 
 		     	
            			
        		});
@@ -65,22 +80,28 @@
     </script>
      
 </head>
-<body onload ="nombreUser();">
-	<h1> Practica Final ASR Ana Urbistondo y Alberto Colino</h1>
+<body  style =" background-color:#d8f0fb">
+	<center>
+	<h1> Practica Final ASR </h1>
+	<h2>Ana Urbistondo y Alberto Colino</h2>
+	</center>
 	<hr />
-	<div style ="margin-left:10%; margin-right:15%">
-		<div  style ="width:85%;" >
-			<textarea  style ="width:100%;"  rows="20" cols="20" id="caja"></textarea>
-			<textarea style ="width:65%; display:inline-block" rows="10" cols="20" id="caja2"></textarea> 
+	<div style ="margin-left:10%; margin-right:15%;width:85%;">
+		<div   >
+			<textarea  style ="width:44%;display:inline-block"  rows="20" cols="20" id="caja"></textarea>
+			
+			<textarea style ="width:40%; display:inline-block" rows="20" cols="10" id="caja2"></textarea> 
 		</div>	
 		<form method ="GET" action ="insertar" id ="idForm">
 		<br>
-			<div>
-				<input style ="width:50%" type="text" id ="mensaje" name ="mensaje" placeholder="Escribe un mensaje">
-				<button id ="btn_add" onclick="pulsado(); return false" data-ignore="push"> Enviar </button>
-				<button id ="btn_add2" onclick="pulsado3(); return false" data-ignore="push"> Enviar traducido </button>
-				<button id ="btn_add3" onclick="pulsado2(); return false" data-ignore="push"> NLP</button>
-				
+			<div >
+				<span style="display: inline-block!;width: 100%;text-align: center;">
+				<input   style="width: 60%" type="text" id ="mensaje" name ="mensaje" placeholder="mensaje">
+				<button class="btn btn-primary" id ="btn_add"  onclick="pulsado(); return false" data-ignore="push"> <i class="material-icons">send</i> </button>
+				<button class="btn btn-primary" id ="btn_add2" onclick="pulsado3(); return false" data-ignore="push"><i class="material-icons">translate</i></button>
+				<button class="btn btn-primary" id ="btn_add3" onclick="pulsado2(); return false" data-ignore="push"> NLP</button>
+				<button class="btn btn-primary" id ="btn_add4" onclick="pulsado4(); return false" data-ignore="push"> <i class="material-icons">mic</i></button>
+				</span>
 			</div>	
 		</form>
 	</div>

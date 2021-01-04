@@ -63,7 +63,7 @@ public class Controller extends HttpServlet {
 			
 			case "/analizar":
 				String msg2 = request.getParameter("mensaje");
-				msg2="me gusta mucho el futbol";
+				//msg2="me gusta mucho el futbol";
 			
 				String resultadoNLP ="";				
 				resultadoNLP = AnalisisLP.analizarLenguaje(msg2,"es");
