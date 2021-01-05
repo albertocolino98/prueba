@@ -68,7 +68,7 @@ public class Controller extends HttpServlet {
 				ArrayList<Palabra> newList2 = new ArrayList<Palabra>(coleccion3);
 				Collections.sort(newList2);
 				String resultado = newList2.toString();
-				resultado = resultado.replaceAll("[^:\n\sA-Za-z]", "");				
+				resultado = resultado.replaceAll("[^:\n\\sA-Za-z]", "");				
 				
 				/*
 				resultado = resultado.replaceAll("[", "");
@@ -111,7 +111,7 @@ public class Controller extends HttpServlet {
 				ArrayList<Palabra> newList9 = new ArrayList<Palabra>(coleccion9);
 				Collections.sort(newList9);
 				String resultado9 = newList9.toString();
-				resultado9 = resultado9.replaceAll("[^:\n\sA-Za-z]", "");
+				resultado9 = resultado9.replaceAll("[^:\n\\sA-Za-z]", "");
 				out.println(resultado9);
 				
 			break;
