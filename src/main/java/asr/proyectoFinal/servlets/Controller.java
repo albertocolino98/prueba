@@ -68,7 +68,7 @@ public class Controller extends HttpServlet {
 				ArrayList<Palabra> newList2 = new ArrayList<Palabra>(coleccion3);
 				Collections.sort(newList2);
 				String resultado = newList2.toString();
-				resultado = resultado.replaceAll("[^:\nA-Za-z]", "");				
+				resultado = resultado.replaceAll("[^:\n\sA-Za-z]", "");				
 				
 				/*
 				resultado = resultado.replaceAll("[", "");
@@ -88,17 +88,32 @@ public class Controller extends HttpServlet {
 			break;	
 			
 			case "/traducir":
-				Palabra palabra = new Palabra();
+			
 				String msg3 = request.getParameter("mensaje");
-				
 				String nombre2 = request.getParameter("nombre");
 				String msgTraducido = Traductor.translate(msg3, "es", "en",false, "");
-				String msgGuardar2 = nombre2 + " : " + msgTraducido;
-				palabra.setName(msgGuardar2);
-				store.persist(palabra);
-				Collection<Palabra> coleccion4 = store.getAll();
-				String resultado2 =coleccion4.toString();	
-				out.println(resultado2);
+				
+				Collection<Palabra> coleccion5 = store.getAll();
+				ArrayList<Palabra> newList5 = new ArrayList<Palabra>(coleccion5);
+				Collections.sort(newList5);
+				
+				Palabra ultimapal2 = newList5.get(newList5.size() -1 );
+				int indice5 = Integer.parseInt(ultimapal2.getName().substring(0,ultimapal2.getName().indexOf("#")));
+				indice5 = indice5 +1;
+				String indice6 = String.valueOf(indice5);
+				String msgGuardar5 = indice6	 + "#" + nombre2 + " : " + msgTraducido ;
+				Palabra palabra5 = new Palabra();
+				palabra5.setName(msgGuardar5);					
+				store.persist(palabra5);	
+				
+				Collection<Palabra> coleccion9 = store.getAll();
+					
+				ArrayList<Palabra> newList9 = new ArrayList<Palabra>(coleccion9);
+				Collections.sort(newList9);
+				String resultado9 = newList9.toString();
+				resultado9 = resultado9.replaceAll("[^:\n\sA-Za-z]", "");
+				out.println(resultado9);
+				
 			break;
 						
 		}
