@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html style ="height:100%;">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	
@@ -14,15 +14,24 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<title>Práctica final ASR	</title>
 	 <style>
-	 input[type=text], select {
-	  width: 100%;
-	  padding: 12px 20px;
-	  margin: 8px 0;
-	  display: inline-block;
-	  border: 1px solid #ccc;
-	  border-radius: 4px;
-	  box-sizing: border-box;
-	}
+	 	input[type=text], select 
+	 	{
+		  width: 100%;
+		  padding: 12px 20px;
+		  margin: 8px 0;
+		  display: inline-block;
+		  border: 1px solid #ccc;
+		  border-radius: 4px;
+		  box-sizing: border-box;
+		}
+		body{
+	        height: 100%;
+	        background: #d8f0fb	;
+	        background-size: cover;
+      	}
+      	html{
+      		heigh: 100%;
+      	}
 	 </style>
 	<script>
 		function pulsado() 
@@ -32,7 +41,7 @@
 			$.get('listar', dataEnvio , function(data) 
 			{			
 				 alert(data);
-		         $('#caja').val($('#caja').text() + data);
+		         $('#caja').val(data);
 		         
 		         $('#mensaje').val("");  
 		         $("#mensaje").focus(); 
@@ -88,7 +97,7 @@
 	<hr />
 	<div style ="margin-left:10%; margin-right:15%;width:85%;">
 		<div   >
-			<textarea  style ="width:44%;display:inline-block"  rows="20" cols="20" id="caja"></textarea>
+			<textarea style ="width:44%;display:inline-block"  rows="20" cols="20" id="caja"></textarea>
 			
 			<textarea style ="width:40%; display:inline-block" rows="20" cols="10" id="caja2"></textarea> 
 		</div>	
@@ -96,11 +105,11 @@
 		<br>
 			<div >
 				<span style="display: inline-block!;width: 100%;text-align: center;">
-				<input   style="width: 60%" type="text" id ="mensaje" name ="mensaje" placeholder="mensaje">
-				<button class="btn btn-primary" id ="btn_add"  onclick="pulsado(); return false" data-ignore="push"> <i class="material-icons">send</i> </button>
-				<button class="btn btn-primary" id ="btn_add2" onclick="pulsado3(); return false" data-ignore="push"><i class="material-icons">translate</i></button>
-				<button class="btn btn-primary" id ="btn_add3" onclick="pulsado2(); return false" data-ignore="push"> NLP</button>
-				<button class="btn btn-primary" id ="btn_add4" onclick="pulsado4(); return false" data-ignore="push"> <i class="material-icons">mic</i></button>
+					<input   style="width: 60%" type="text" id ="mensaje" name ="mensaje" placeholder="mensaje">
+					<button class="btn btn-primary" id ="btn_add"  onclick="pulsado(); return false" data-ignore="push"> <i class="material-icons">send</i> </button>
+					<button class="btn btn-primary" id ="btn_add2" onclick="pulsado3(); return false" data-ignore="push"><i class="material-icons">translate</i></button>
+					<button class="btn btn-primary" id ="btn_add3" onclick="pulsado2(); return false" data-ignore="push"> NLP</button>
+					<button class="btn btn-primary" id ="btn_add4" onclick="pulsado4(); return false" data-ignore="push"> <i class="material-icons">mic</i></button>
 				</span>
 			</div>	
 		</form>
