@@ -67,7 +67,7 @@ public class Controller extends HttpServlet {
 					
 				ArrayList<Palabra> newList2 = new ArrayList<Palabra>(coleccion3);
 				Collections.sort(newList2);
-				String resultado = coleccion3.toString();
+				String resultado = newList2.toString();
 				resultado = resultado.replaceAll("[^:\nA-Za-z]", "");				
 				
 				/*
