@@ -76,7 +76,7 @@
 		}
 		function pulsado5()
 		{
-			var explicacion= "";
+			var explicacion= "1. Nuestra practica final consiste en un chat\n 2. Si pulsa el primer boton, se manda el mensaje \n 3. Si pulsa el boton de traducir, se manda el mensaje traducido, usando el servicio de translate \n 4. Si pulsa el boton de NLP, en la caja de la derecha se mostrara el resultado del analisis por lenguaje natural, usando el servicio de ibm de NLP. Si ve que no aparece nada, pruebe a poner una frase mas clara, con sujeto y predicado. \n 5. Si pulsa el boton del microfono, podra escuchar una grabacion en la que se dice la palabra que quiere mandar, usando el servicio de text2speech";
 			alert(explicacion);
 			
 		}
@@ -93,21 +93,7 @@
 			//audio.src="reproducir?mensaje="+msgn;
 			//alert($('#mensaje').val());			
 			$("#idForm").submit();
-			$.get('reproducir', $("#idForm").serialize(), function(data4)
-			{
-				//alert(data4); 
-				
-				var audiov = document.getElementById("audioPlay");
-				$('#audioPlay').css("display","block");
-				$('#idAudios').src=data4;
-				//audiov.load();
-				//audiov.play();
-				/*
-				$('#audioPlay').src=data4;
-				$("#audioPlay").load();
-				$('#audioPlay').play();
-				*/
-			});
+			
 			
 			/*
 			$.ajax({
@@ -180,7 +166,7 @@
 			
 			<textarea readonly="readonly" style ="width:40%; display:inline-block" rows="20" cols="10" id="caja2"></textarea> 
 		</div>	
-		<form method ="GET" action ="insertar" id ="idForm">
+		<form method ="GET" action ="reproducir" id ="idForm">
 		<br>
 			<div >
 				<span style="display: inline-block!;width: 100%;text-align: center;">
