@@ -41,7 +41,7 @@ public class Controller extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		//PrintWriter out = response.getWriter();
+		
 		//out.println("<div>");
 		
 		CloudantPalabraStore store = new CloudantPalabraStore();
@@ -49,6 +49,7 @@ public class Controller extends HttpServlet {
 		switch(request.getServletPath())
 		{
 			case "/listar":				
+				PrintWriter out = response.getWriter();
 				String msg = request.getParameter("mensaje");
 				String nombre = request.getParameter("nombre");			
 				
@@ -76,21 +77,26 @@ public class Controller extends HttpServlet {
 				resultado = resultado.replaceAll("[", "");
 				resultado = resultado.replaceAll("]", "");
 				*/
-				//out.println(resultado);
+				out.println(resultado);
+				out.close();
 				
 			break;
 			
 			case "/analizar":
+				PrintWriter out2 = response.getWriter();
 				String msg2 = request.getParameter("mensaje");
 				//msg2="me gusta mucho el futbol";
 			
 				String resultadoNLP ="";				
 				resultadoNLP = AnalisisLP.analizarLenguaje(msg2,"es");
-				//out.println(String.format("%s", resultadoNLP));
+				
+				out2.println(String.format("%s", resultadoNLP));
+				out2.close();
 			break;	
 			
 			case "/traducir":
-			
+				
+				PrintWriter out3 = response.getWriter();
 				String msg3 = request.getParameter("mensaje");
 				String nombre2 = request.getParameter("nombre");
 				String msgTraducido = Traductor.translate(msg3, "es", "en",false, "");
@@ -114,7 +120,8 @@ public class Controller extends HttpServlet {
 				Collections.sort(newList9);
 				String resultado9 = newList9.toString();
 				resultado9 = resultado9.replaceAll("[^:\n\\sA-Za-z]", "");
-				//out.println(resultado9);
+				out3.println(resultado9);
+				out3.close();
 				
 			break;
 		
