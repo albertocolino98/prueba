@@ -118,7 +118,8 @@ public class Controller extends HttpServlet {
 				
 			break;
 			case "/reproducir":
-				String audio = request.getParameter("mensaje");
+				//String audio = request.getParameter("mensaje");
+				String audio  = "hello";
 				//TextoToAudio.reproducirAudio("hola");
 				//File audioFile = new File("./audio/hello.wav");
 				//FileUtils.copyInputStreamToFile(out1, audioFile);
