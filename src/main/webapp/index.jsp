@@ -93,7 +93,7 @@
 				
 				var audiov = document.getElementById("audioPlay");
 				$('#audioPlay').css("display","block");
-				audiov.src=data4;
+				$('#audioPlay').src=data4;
 				//audiov.load();
 				//audiov.play();
 				/*
