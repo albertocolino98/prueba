@@ -74,6 +74,39 @@
            			
        		});
 		}
+		function pulsado4()
+		{
+			var msgn = document.getElementById("mensaje").value; 
+			var audio = document.getElementById("audioPlay");
+			var dataEnvio = $("#idForm").serialize();
+			
+			//$("#idForm").submit();
+			//alert("reproducir?mensaje="+msgn);
+			//audio.src="reproducir?mensaje="+msgn;
+			
+			$.get('reproducir', $("#idForm").serialize(), function(data4)
+					{
+						alert(data4); 
+	
+						//$('#audioPlay').src=data4;
+						//$("#audioPlay").load();
+						//$('#audioPlay').play();
+					});
+			
+			//var audio = document.createElement('audio');
+			 
+			//audio.setAttribute('src','media/hello_world.mp3');
+			//audio.setAttribute('type','audio/mpeg');
+			audio.load();
+			audio.play();
+			
+			/*
+			
+			
+			$.get('reproducir',dataEnvio
+			
+			*/
+		}
 		function nombreUser()
 		{
 			
@@ -97,9 +130,9 @@
 	<hr />
 	<div style ="margin-left:10%; margin-right:15%;width:85%;">
 		<div   >
-			<textarea style ="width:44%;display:inline-block"  rows="20" cols="20" id="caja"></textarea>
+			<textarea readonly="readonly" style ="width:44%;display:inline-block"  rows="20" cols="20" id="caja"></textarea>
 			
-			<textarea style ="width:40%; display:inline-block" rows="20" cols="10" id="caja2"></textarea> 
+			<textarea readonly="readonly" style ="width:40%; display:inline-block" rows="20" cols="10" id="caja2"></textarea> 
 		</div>	
 		<form method ="GET" action ="insertar" id ="idForm">
 		<br>
@@ -112,6 +145,12 @@
 					<button class="btn btn-primary" id ="btn_add4" onclick="pulsado4(); return false" data-ignore="push"> <i class="material-icons">mic</i></button>
 				</span>
 			</div>	
+			<div> 
+				<audio controls id="audioPlay" preload="auto">
+					<source src="reproducir?mensaje="<%=request.getParameter("mensaje") %> type="audio/mpeg">
+				</audio>
+			
+			</div>
 		</form>
 	</div>
 		<!-- 

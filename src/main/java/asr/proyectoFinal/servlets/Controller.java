@@ -1,5 +1,6 @@
 package asr.proyectoFinal.servlets;
 
+import asr.proyectoFinal.services.TextoToAudio; 
 import java.io.BufferedWriter;
 import java.util.Collections;
 import java.io.File;
@@ -13,6 +14,7 @@ import java.nio.Buffer;
 import java.nio.file.Files;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,7 +35,7 @@ import java.util.*;
 /**
  * Servlet implementation class Controller
  */
-@WebServlet(urlPatterns = {"/listar", "/insertar", "/traducir","/analizar"})
+@WebServlet(urlPatterns = {"/listar", "/insertar", "/traducir","/analizar" ,"/reproducir"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -114,6 +116,36 @@ public class Controller extends HttpServlet {
 				resultado9 = resultado9.replaceAll("[^:\n\\sA-Za-z]", "");
 				out.println(resultado9);
 				
+			break;
+			case "/reproducir":
+				String audio = request.getParameter("mensaje");
+				//TextoToAudio.reproducirAudio("hola");
+				//File audioFile = new File("./audio/hello.wav");
+				//FileUtils.copyInputStreamToFile(out1, audioFile);
+				//out.println(out1);
+				//quiz = (Quiz) request.getSession().getAttribute("quiz");
+			    //SelectedLanguage selectedLanguage = (SelectedLanguage) request.getSession().getAttribute("selectedLanguage");
+
+			    //int questionId = Integer.parseInt(request.getParameter("q"));
+			    //String question = quiz.getQuestions().get(questionId).getQuestion();
+
+				ServletContext servletContext = getServletContext();
+				
+			      
+			      try {
+			    	  byte[] bytes= TextoToAudio.reproducir(audio, servletContext.getRealPath("/")+"media/hello_world.mp3");
+			    	  response.getOutputStream().write(bytes);
+
+			      } catch(IOException e)
+			      {
+			    	  e.printStackTrace();
+			      }
+			      
+			    //response.getOutputStream().flush();
+			    
+			    //response.getOutputStream().close();
+			    //out.println("Audio"); 
+			     
 			break;
 						
 		}
