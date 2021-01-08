@@ -87,7 +87,7 @@
 			//audio.src="reproducir?mensaje="+msgn;
 			alert($('#mensaje').val());			
 			
-			$.get('reproducir', $('#mensaje').val(), function(data4)
+			$.get('reproducir', $("#idForm").serialize(), function(data4)
 			{
 				//alert(data4); 
 				var audiov = document.getElementById("audioPlay");
