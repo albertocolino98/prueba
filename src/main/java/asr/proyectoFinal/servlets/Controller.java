@@ -127,6 +127,9 @@ public class Controller extends HttpServlet {
 		
 			case "/reproducir":
 				String audio = request.getParameter("mensaje");
+				if(audio==null) {
+					audio ="not yet";
+				}
 				//String audio  = "hello";
 				//TextoToAudio.reproducirAudio("hola");
 				//File audioFile = new File("./audio/hello.wav");

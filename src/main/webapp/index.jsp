@@ -89,7 +89,7 @@
 			
 			$.get('reproducir', $("#idForm").serialize(), function(data4)
 			{
-				//alert(data4); 
+				alert(data4); 
 				
 				var audiov = document.getElementById("audioPlay");
 				$('#audioPlay').css("display","block");
@@ -181,7 +181,7 @@
 			<div> 
 				
 				<audio id="audioPlay" style ="display:none;" controls>
-					<source id="idAudios" src="" type="audio/mpeg">
+					<source id="idAudios" src="reproducir" type="audio/mpeg">
 				</audio>
 				 
 				
