@@ -41,7 +41,7 @@ public class Controller extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		//PrintWriter out = response.getWriter();
+		PrintWriter out = response.getWriter();
 		//out.println("<div>");
 		
 		CloudantPalabraStore store = new CloudantPalabraStore();
@@ -76,7 +76,7 @@ public class Controller extends HttpServlet {
 				resultado = resultado.replaceAll("[", "");
 				resultado = resultado.replaceAll("]", "");
 				*/
-				//out.println(resultado);
+				out.println(resultado);
 				
 			break;
 			
@@ -86,7 +86,7 @@ public class Controller extends HttpServlet {
 			
 				String resultadoNLP ="";				
 				resultadoNLP = AnalisisLP.analizarLenguaje(msg2,"es");
-				//out.println(String.format("%s", resultadoNLP));
+				out.println(String.format("%s", resultadoNLP));
 			break;	
 			
 			case "/traducir":
@@ -114,7 +114,7 @@ public class Controller extends HttpServlet {
 				Collections.sort(newList9);
 				String resultado9 = newList9.toString();
 				resultado9 = resultado9.replaceAll("[^:\n\\sA-Za-z]", "");
-				//out.println(resultado9);
+				out.println(resultado9);
 				
 			break;
 			case "/reproducir2":
