@@ -117,6 +117,9 @@ public class Controller extends HttpServlet {
 				out.println(resultado9);
 				
 			break;
+			case "/reproducir2":
+				out.println("reproducir2");
+			break;
 			case "/reproducir":
 				//String audio = request.getParameter("mensaje");
 				String audio  = "hola";

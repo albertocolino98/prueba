@@ -86,6 +86,8 @@
 			//alert("reproducir?mensaje="+msgn);
 			//audio.src="reproducir?mensaje="+msgn;
 			alert($('#mensaje').val());
+			/*
+			
 			$.get('reproducir', $('#mensaje').val(), function(data4)
 			{
 				alert(data4); 
@@ -93,6 +95,26 @@
 				//$('#audioPlay').src=data4;
 				//$("#audioPlay").load();
 				//$('#audioPlay').play();
+			});
+			*/
+			$.ajax({
+			    type: "get", url: "reproducir2",
+			    success: function (text) {
+			        alert(text);
+			    },
+			    error: function (request, status, error) {
+			        alert(error + status + request.responseText);
+			    }
+			});
+			
+			$.ajax({
+			    type: "get", url: "reproducir",
+			    success: function (text) {
+			        alert(text);
+			    },
+			    error: function (request, status, error) {
+			        alert(error + status + request.responseText);
+			    }
 			});
 			
 			//var audio = document.createElement('audio');
