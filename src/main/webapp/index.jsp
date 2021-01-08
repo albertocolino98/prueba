@@ -40,7 +40,7 @@
 			var dataEnvio = $("#idForm").serialize() + "&nombre=" + localStorage.getItem("nombre");
 			$.get('listar', dataEnvio , function(data) 
 			{			
-				 alert(data);
+				 //alert(data);
 		         $('#caja').val(data);
 		         
 		         $('#mensaje').val("");  
@@ -74,6 +74,12 @@
            			
        		});
 		}
+		function pulsado5()
+		{
+			var explicacion= "";
+			alert(explicacion);
+			
+		}
 		function pulsado4()
 		{
 			/*
@@ -82,14 +88,14 @@
 			var dataEnvio = $("#idForm").serialize();
 			*/
 			
-			//$("#idForm").submit();
+			//
 			//alert("reproducir?mensaje="+msgn);
 			//audio.src="reproducir?mensaje="+msgn;
-			alert($('#mensaje').val());			
-			
+			//alert($('#mensaje').val());			
+			$("#idForm").submit();
 			$.get('reproducir', $("#idForm").serialize(), function(data4)
 			{
-				alert(data4); 
+				//alert(data4); 
 				
 				var audiov = document.getElementById("audioPlay");
 				$('#audioPlay').css("display","block");
@@ -147,7 +153,14 @@
 			{
 				var nombre = prompt("Cual es tu nombre?", "");
 				localStorage.setItem("nombre", nombre);
-				$("#mensaje").focus(); 
+				$.get('listarv', {dataEnvio : "hola"} , function(data9) 
+				{			
+					 
+			         $('#caja').val(data9);			         
+			         $('#mensaje').val("");  
+			         $("#mensaje").focus(); 			     	
+	           			
+	       		});
 				
 			}
 			
@@ -176,12 +189,13 @@
 					<button class="btn btn-primary" id ="btn_add2" onclick="pulsado3(); return false" data-ignore="push"><i class="material-icons">translate</i></button>
 					<button class="btn btn-primary" id ="btn_add3" onclick="pulsado2(); return false" data-ignore="push"> NLP</button>
 					<button class="btn btn-primary" id ="btn_add4" onclick="pulsado4(); return false" data-ignore="push"> <i class="material-icons">mic</i></button>
+					<button class="btn btn-primary" id ="btn_add5" onclick="pulsado5(); return false" data-ignore="push"> Explicacion practica</button>
 				</span>
 			</div>	
 			<div> 
 				
 				<audio id="audioPlay" style ="display:none;" controls>
-					<source id="idAudios" src="reproducir" type="audio/mpeg">
+					<source id="idAudios" src="reproducir?mensaje="<%=request.getParameter("mensaje") %> type="audio/mpeg">
 				</audio>
 				 
 				

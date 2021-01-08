@@ -35,7 +35,7 @@ import java.util.*;
 /**
  * Servlet implementation class Controller
  */
-@WebServlet(urlPatterns = {"/listar", "/insertar", "/traducir","/analizar" ,"/reproducir"})
+@WebServlet(urlPatterns = {"/listar", "/insertar", "/traducir","/analizar" ,"/reproducir","/listarv"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -80,6 +80,18 @@ public class Controller extends HttpServlet {
 				out.println(resultado);
 				out.close();
 				
+			break;
+			case "/listarv":
+				PrintWriter out99 = response.getWriter();						
+				
+				Collection<Palabra> coleccion99 = store.getAll();
+				ArrayList<Palabra> newList99 = new ArrayList<Palabra>(coleccion99);
+				Collections.sort(newList99);
+				String resultado99 = newList99.toString();
+				resultado99 = resultado99.replaceAll("[^:\n\\sA-Za-z]", "");	
+				
+				out99.println(resultado99);
+				out99.close();
 			break;
 			
 			case "/analizar":
