@@ -31,11 +31,11 @@ public class TextoToAudio
 		
 		byte[] bytes = null; 
 		
-		  SynthesizeOptions synthesizeOptions = new SynthesizeOptions.Builder()
-		      .text(frase)
-		      .accept("audio/mp3")
-		      .voice("en-US_AllisonVoice")
-		      .build();
+		 SynthesizeOptions synthesizeOptions = new SynthesizeOptions.Builder()
+			      .text(frase)
+			      .accept("audio/mp3")
+			      .voice("en-GB_CharlotteV3Voice")
+			      .build();
 		  
 		  
 		  //System.out.println(path);
@@ -73,8 +73,13 @@ public class TextoToAudio
 		    }
 		
 		//return bytes;
-		  String palabra = "hola";
+		  
+		  /*
+		   String palabra = "hola";
+		   
 		  byte[] bytes2 = palabra.getBytes();
 		  return bytes2;
+		  */
+		  return bytes;
 	}
 }

@@ -97,6 +97,7 @@
 				//$('#audioPlay').play();
 			});
 			*/
+			/*
 			$.ajax({
 			    type: "get", url: "reproducir2",
 			    success: function (text) {
@@ -106,6 +107,7 @@
 			        alert(error + status + request.responseText);
 			    }
 			});
+			*/
 			
 			$.ajax({
 			    type: "get", url: "reproducir",
@@ -170,11 +172,11 @@
 				</span>
 			</div>	
 			<div> 
-				<!-- 
+				
 				<audio controls>
 					<source src="reproducir" type="audio/mpeg">
 				</audio>
-				 -->
+				 
 				
 			</div>
 		</form>
