@@ -129,6 +129,7 @@ public class Controller extends HttpServlet {
 			    //int questionId = Integer.parseInt(request.getParameter("q"));
 			    //String question = quiz.getQuestions().get(questionId).getQuestion();
 
+				/*
 				ServletContext servletContext = getServletContext();
 				
 			      
@@ -140,6 +141,10 @@ public class Controller extends HttpServlet {
 			      {
 			    	  e.printStackTrace();
 			      }
+			      */
+				 byte[] bytes = TextoToAudio.reproducir(audio, "");
+
+			      response.getOutputStream().write(bytes);
 			      
 			    //response.getOutputStream().flush();
 			    

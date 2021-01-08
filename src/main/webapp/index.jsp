@@ -76,29 +76,31 @@
 		}
 		function pulsado4()
 		{
+			/*
 			var msgn = document.getElementById("mensaje").value; 
 			var audio = document.getElementById("audioPlay");
 			var dataEnvio = $("#idForm").serialize();
+			*/
 			
 			//$("#idForm").submit();
 			//alert("reproducir?mensaje="+msgn);
 			//audio.src="reproducir?mensaje="+msgn;
-			
-			$.get('reproducir', $("#idForm").serialize(), function(data4)
-					{
-						alert(data4); 
-	
-						//$('#audioPlay').src=data4;
-						//$("#audioPlay").load();
-						//$('#audioPlay').play();
-					});
+			alert($('#mensaje').val());
+			$.get('reproducir', $('#mensaje').val(), function(data4)
+			{
+				alert(data4); 
+
+				//$('#audioPlay').src=data4;
+				//$("#audioPlay").load();
+				//$('#audioPlay').play();
+			});
 			
 			//var audio = document.createElement('audio');
 			 
 			//audio.setAttribute('src','media/hello_world.mp3');
 			//audio.setAttribute('type','audio/mpeg');
-			audio.load();
-			audio.play();
+			//audio.load();
+			//audio.play();
 			
 			/*
 			
@@ -147,7 +149,7 @@
 			</div>	
 			<div> 
 				<audio controls id="audioPlay" preload="auto">
-					<source src="reproducir?mensaje="<%=request.getParameter("mensaje") %> type="audio/mpeg">
+					<source src="" type="audio/mpeg">
 				</audio>
 			
 			</div>

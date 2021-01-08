@@ -26,25 +26,24 @@ public class TextoToAudio
 		IamAuthenticator authenticator = new IamAuthenticator("_zS95XZ9EMzxWrvEOGNMbZNJD09vz9LxubBXGPhUSKNR");
 		TextToSpeech textToSpeech = new TextToSpeech(authenticator);
 		textToSpeech.setServiceUrl("https://api.eu-gb.text-to-speech.watson.cloud.ibm.com/instances/2a314690-7fb9-4815-8915-cea1717d0ba9");
-		HttpConfigOptions configOptions = new HttpConfigOptions.Builder().disableSslVerification(true).build();
-		textToSpeech.configureClient(configOptions);
+		//HttpConfigOptions configOptions = new HttpConfigOptions.Builder().disableSslVerification(true).build();
+		//textToSpeech.configureClient(configOptions);
 		
 		byte[] bytes = null; 
-		try {
-			  SynthesizeOptions synthesizeOptions =
-			    new SynthesizeOptions.Builder()
-			      .text(frase)
-			      .accept("audio/mp3")
-			      .voice("en-US_AllisonVoice")
-			      .build();
-			  
-			  
-			  System.out.println(path);
-			  
-			  InputStream inputStream =
-			    textToSpeech.synthesize(synthesizeOptions).execute().getResult();
-			  InputStream in = WaveUtils.reWriteWaveHeader(inputStream);
-			  
+		
+		  SynthesizeOptions synthesizeOptions = new SynthesizeOptions.Builder()
+		      .text(frase)
+		      .accept("audio/mp3")
+		      .voice("en-US_AllisonVoice")
+		      .build();
+		  
+		  
+		  System.out.println(path);
+		  
+		  InputStream inputStream = textToSpeech.synthesize(synthesizeOptions).execute().getResult();
+		  /*
+		  try {
+			  InputStream in = WaveUtils.reWriteWaveHeader(inputStream);  
 			  bytes = WaveUtils.toByteArray(inputStream);
 			  
 			  OutputStream out = new FileOutputStream(path);
@@ -60,6 +59,18 @@ public class TextoToAudio
 			} catch (IOException e) {
 			  e.printStackTrace();
 			}
+			*/
+		  try {
+		      bytes = WaveUtils.toByteArray(inputStream);
+		    } catch (IOException e) {
+		      e.printStackTrace();
+		    } finally {
+		      try {
+		        inputStream.close();
+		      } catch (IOException e) {
+		        e.printStackTrace();
+		      }
+		    }
 		
 		return bytes; 
 	}
