@@ -38,7 +38,7 @@ public class TextoToAudio
 		      .build();
 		  
 		  
-		  System.out.println(path);
+		  //System.out.println(path);
 		  
 		  InputStream inputStream = textToSpeech.synthesize(synthesizeOptions).execute().getResult();
 		  /*
@@ -72,6 +72,9 @@ public class TextoToAudio
 		      }
 		    }
 		
-		return bytes; 
+		//return bytes;
+		  String palabra = "hola";
+		  byte[] bytes2 = palabra.getBytes();
+		  return bytes2;
 	}
 }

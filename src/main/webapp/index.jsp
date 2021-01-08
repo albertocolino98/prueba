@@ -148,14 +148,12 @@
 				</span>
 			</div>	
 			<div> 
-				<!--
-				<audio controls id="audioPlay" preload="auto">
-					<source src="" type="audio/mpeg">
+				<!-- 
+				<audio controls>
+					<source src="reproducir" type="audio/mpeg">
 				</audio>
-				-->
-				<audio src="reproducir" type="audio/mpeg">
-					
-				</audio>
+				 -->
+				
 			</div>
 		</form>
 	</div>
