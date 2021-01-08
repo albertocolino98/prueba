@@ -78,25 +78,29 @@
 		{
 			/*
 			var msgn = document.getElementById("mensaje").value; 
-			var audio = document.getElementById("audioPlay");
+			
 			var dataEnvio = $("#idForm").serialize();
 			*/
 			
 			//$("#idForm").submit();
 			//alert("reproducir?mensaje="+msgn);
 			//audio.src="reproducir?mensaje="+msgn;
-			alert($('#mensaje').val());
-			/*
+			alert($('#mensaje').val());			
 			
 			$.get('reproducir', $('#mensaje').val(), function(data4)
 			{
-				alert(data4); 
-
-				//$('#audioPlay').src=data4;
-				//$("#audioPlay").load();
-				//$('#audioPlay').play();
+				//alert(data4); 
+				var audiov = document.getElementById("audioPlay");
+				audiov.src=data4;
+				audiov.load();
+				audiov.play();
+				/*
+				$('#audioPlay').src=data4;
+				$("#audioPlay").load();
+				$('#audioPlay').play();
+				*/
 			});
-			*/
+			
 			/*
 			$.ajax({
 			    type: "get", url: "reproducir2",
@@ -108,7 +112,7 @@
 			    }
 			});
 			*/
-			
+			/*
 			$.ajax({
 			    type: "get", url: "reproducir",
 			    success: function (text) {
@@ -118,6 +122,7 @@
 			        alert(error + status + request.responseText);
 			    }
 			});
+			*/
 			
 			//var audio = document.createElement('audio');
 			 
@@ -173,8 +178,8 @@
 			</div>	
 			<div> 
 				
-				<audio controls>
-					<source src="reproducir" type="audio/mpeg">
+				<audio id="audioPlay" style ="display:none;" controls>
+					<source src="" type="audio/mpeg">
 				</audio>
 				 
 				
