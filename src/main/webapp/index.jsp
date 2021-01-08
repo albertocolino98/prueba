@@ -93,7 +93,7 @@
 				
 				var audiov = document.getElementById("audioPlay");
 				$('#audioPlay').css("display","block");
-				$('#audioPlay').src=data4;
+				$('#idAudios').src=data4;
 				//audiov.load();
 				//audiov.play();
 				/*
@@ -181,7 +181,7 @@
 			<div> 
 				
 				<audio id="audioPlay" style ="display:none;" controls>
-					<source src="" type="audio/mpeg">
+					<source id="idAudios" src="" type="audio/mpeg">
 				</audio>
 				 
 				
