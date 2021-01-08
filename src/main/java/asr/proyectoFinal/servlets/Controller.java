@@ -77,6 +77,7 @@ public class Controller extends HttpServlet {
 				resultado = resultado.replaceAll("]", "");
 				*/
 				out.println(resultado);
+				out.close();
 				
 			break;
 			
@@ -87,6 +88,7 @@ public class Controller extends HttpServlet {
 				String resultadoNLP ="";				
 				resultadoNLP = AnalisisLP.analizarLenguaje(msg2,"es");
 				out.println(String.format("%s", resultadoNLP));
+				out.close();
 			break;	
 			
 			case "/traducir":
@@ -115,6 +117,7 @@ public class Controller extends HttpServlet {
 				String resultado9 = newList9.toString();
 				resultado9 = resultado9.replaceAll("[^:\n\\sA-Za-z]", "");
 				out.println(resultado9);
+				out.close();
 				
 			break;
 			case "/reproducir2":
