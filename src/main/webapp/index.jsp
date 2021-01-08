@@ -90,10 +90,12 @@
 			$.get('reproducir', $("#idForm").serialize(), function(data4)
 			{
 				//alert(data4); 
+				
 				var audiov = document.getElementById("audioPlay");
+				$('#audioPlay').css("display","block");
 				audiov.src=data4;
-				audiov.load();
-				audiov.play();
+				//audiov.load();
+				//audiov.play();
 				/*
 				$('#audioPlay').src=data4;
 				$("#audioPlay").load();
